@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Money Transfer</title>
+    </h:head>
+    
+    <h:body>
+        <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">Currency Web site</ui:insert>
+            <h1>Currency Transfer</h1>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">Pages</ui:insert>
+                <h1>Index page</h1>
+                <h1>Currency Converter</h1>
+                <h1>Currency Transfer</h1>
+                <h1>Calculator</h1>
+            </div>
+            <div id="content" class="left_content">
+                <h:form>
+                    <ul>
+                        <li>
+                        <ui:insert name="NameSender">Name of sender:  </ui:insert>
+                        <h:inputText value="#{MoneyTransfer.getSenderName}">
+                            Sender Name
+                        </h:inputText>
+                        </li>
+                        
+                        <li>
+                        <ui:insert name="NameReciever">Name Of receiver:  </ui:insert>
+                        <h:inputText value="#{MoneyTransfer.getReceiverName}">
+                            Receiver Name
+                        </h:inputText>
+                        </li>
+                        
+                        <li>
+                        <ui:insert name="OriginMoney">The Origin Of the Money:  </ui:insert>
+                        <h:inputText value="#{MoneyTransfer.getSenderLocation}">
+                            Origin
+                        </h:inputText>
+                        </li>
+                        
+                        <li>
+                        <ui:insert name="DestinationMoney">The Destination of the Money:  </ui:insert>
+                        <h:inputText value="#{MoneyTransfer.getReceiverLocation}">
+                            Destination
+                        </h:inputText>
+                        </li>
+                        
+                        <li>
+                        <ui:insert name="SenderCurrency">The Senders Currency:  </ui:insert>
+                        <h:selectOneMenu value="#{CurrencyConverter.operation1}">
+                            <f:selectItem itemValue="1" itemLabel="CNY"/>
+                            <f:selectItem itemValue="2" itemLabel="EUR"/>
+                            <f:selectItem itemValue="3" itemLabel="GBP"/>
+                            <f:selectItem itemValue="4" itemLabel="INR"/>
+                            <f:selectItem itemValue="5" itemLabel="JPY"/>
+                            <f:selectItem itemValue="6" itemLabel="USD"/>
+                            <f:selectItem itemValue="7" itemLabel="ZAR"/>
+                        </h:selectOneMenu>
+                        </li>
+                        
+                        <li>
+                        <ui:insert name="ReceieverCurrency">The Receiver's Currency:  </ui:insert>
+                        <h:selectOneMenu value="#{CurrencyConverter.operation2}">
+                            <f:selectItem itemValue="8" itemLabel="CNY"/>
+                            <f:selectItem itemValue="9" itemLabel="EUR"/>
+                            <f:selectItem itemValue="10" itemLabel="GBP"/>
+                            <f:selectItem itemValue="11" itemLabel="INR"/>
+                            <f:selectItem itemValue="12" itemLabel="JPY"/>
+                            <f:selectItem itemValue="13" itemLabel="USD"/>
+                            <f:selectItem itemValue="14" itemLabel="ZAR"/>
+                        </h:selectOneMenu>
+                        </li>
+                                               
+                        <li>
+                        <ui:insert name="CurrencyConversion">The Currency Rate Conversion:  </ui:insert>
+                        <h:outputText value="">
+                            Conversion rate = SenderCurrency and reciever currency rate
+                        </h:outputText>
+                        </li>
+                        
+                        <li>
+                        <ui:insert name="TransferAmount">The Amount to be transfered:  </ui:insert>
+                        <h:inputText value="#{CurrencyConverter.firstOperand}">
+                            Transfer amount
+                        </h:inputText>
+                        </li>
+                        
+                        <h:commandButton value="Convert" action="#{serviceBean.submit()}">
+                            <f:ajax execute="@form" render="result"/>
+                        </h:commandButton>
+                        <h:outputLabel id="The amount to be received." value="Value : #{serviceBean.result}"/>
+
+                        <h:commandButton action="#{CurrencyTransferSuccess}" value="Transfer"/>
+                        
+                    </ul>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+    </h:body>
+</html>
