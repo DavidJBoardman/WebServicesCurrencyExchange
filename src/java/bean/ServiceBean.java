@@ -7,12 +7,7 @@ package Bean;
 
 import Services.CurrencyConverter_Service;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
-import javax.enterprise.context.Dependent;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.xml.ws.WebServiceRef;
